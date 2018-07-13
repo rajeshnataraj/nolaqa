@@ -1,0 +1,6 @@
+{
+    "require": {
+        "rych/phpass": "3.0.*@beta",
+        "phpmailer/phpmailer": "^5.2"
+    }
+}

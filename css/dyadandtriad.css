@@ -1,0 +1,389 @@
+@charset "utf-8";
+/* CSS Document */
+
+.synTable{
+	width:100%;
+	height:100%;
+	display:table;
+}
+/* table left start*/
+
+.synTableleft{
+	width:30%;
+	height:100%;
+	float:left;
+	display:table;
+	color:#4a718b;
+}
+.tblHeadStageleft{
+	height:40px;
+	width:100%;
+	color:#4a718b;
+}
+.tblHeadStageright{
+	height:30px;
+	width:100%;
+	padding-top:7px;
+	border:2px solid #b3c8d7;
+	border-bottom:none;
+	text-align:center;
+	color:#4a718b;
+}
+.tblHeader{
+	height:90px;
+	width:100%;
+}
+.tblHeadernobg{
+	width:100%;
+	height:120px;
+	border-bottom:3px solid #b3c8d7;
+}
+.tdGradient{
+	background: linear-gradient(to bottom, #FFFCFC 0%, #F0EFEF 93%) repeat scroll 0 0 transparent;
+}
+.tblLeftnb{
+	background:none;
+	height:30px;
+	width:100%;
+}
+.tbTdmedium{
+	height:40px;
+	padding-top:20px;
+	width:100%;
+	text-align:center;
+	vertical-align:middle;
+	border-bottom:2px solid #f2f2f2;
+}
+.tbTdnotext{
+	height:91px;
+	width:100%;
+	border:2px solid #b3c8d7;
+	border-right:none;
+}
+.tblleftTdset{
+	height:185px;
+	border-left:2px solid #b3c8d7;
+	border-bottom:2px solid #b3c8d7;
+	border-right:none;
+	width:100%;
+}
+
+.tblleftTdsetdyad{
+	height:124px;
+	border-left:2px solid #b3c8d7;
+	border-bottom:2px solid #b3c8d7;
+	border-right:none;
+	width:100%;
+}
+
+/*table right start*/
+
+.synTableright{
+	width:70%;
+	height:100%;
+	float:left;
+}
+.tblRighthead{
+	height:120px;
+	width:100%;
+	border:2px solid #b3c8d7;
+}
+.tblRightcolHeadtop{
+	width:100%;
+	height:29px;
+	text-align:center;
+	border-bottom:2px solid #b3c8d7;
+	color:#4a718b;
+}
+.tblRightcolHead{
+	width:100%;
+	height:30px;
+	text-align:center;
+	color:#4a718b;
+}
+.tblRightcolHead1{
+	width:100%;
+	height:60px;
+	text-align:center;
+	color:#4a718b;
+}
+.tblRightHeadRow{
+	width:100%;
+	height:30px;
+	border-bottom:2px solid #b3c8d7;
+	color:#88abc1;
+}
+
+.tblRightcont{
+	width:100%;
+	border-bottom:1px solid #b3c8d7;
+	border-right:1px solid #b3c8d7;
+	border-left:1px solid #b3c8d7;
+	color:#597586;
+	background:#FFF;
+}
+.tblRightcontRow{
+	width:100%;
+	height:30px;
+	border-bottom:1px solid #e9e9e9; 
+}
+.tblRight3col{
+	width:100%;
+	float:left;
+	height:30px;
+	text-align:center;
+}
+
+.tblRight3coldyad{
+	width:49%;
+	float:left;
+	height:25px;
+	padding-top:5px;
+	text-align:center;
+}
+
+.tblRight3col-left{
+	width:100%;
+	float:left;
+	height:25px;
+	/*padding-top:5px;*/
+	text-align:center;
+	border-right:1px solid #e9e9e9;
+}
+
+.tblRight3col-leftdyad{
+	width:100%;
+	float:left;
+	height:30px;
+	text-align:center;
+}
+
+.tblRight3col-right{
+	width:32%;
+	float:left;
+	height:30px;
+	text-align:center;
+	border-left:1px solid #e9e9e9;
+}
+.tblR3col{
+	width:32%;
+	float:left;
+	height:25px;
+	padding-top:5px;
+	text-align:center;
+}
+
+
+.tblR3col-left{
+	width:33%;
+	float:left;
+	height:25px;
+	padding-top:5px;
+	text-align:center;
+	border-right:1px solid #e9e9e9;
+}
+
+.tblR3coldyad{
+	width:49%;
+	float:left;
+	height:25px;
+	text-align:center;
+}
+
+.tblR3col-leftdyad{
+	width:50%;
+	float:left;
+	height:25px;
+	text-align:center;
+	border-right:1px solid #e9e9e9;
+	
+}
+	
+.tblR3col-right{
+	width:32%;
+	float:left;
+	height:25px;
+	padding-top:5px;
+	text-align:center;
+	border-left:1px solid #e9e9e9;
+}
+
+.dyadimagetop
+{
+	width:10%;
+	height:28px;
+	float:left;
+	position: relative;
+}
+
+.triadimagetop
+{
+	width:10%;
+	height:28px;
+	float:left;
+	position: relative;
+	border-bottom:1px solid;
+}
+
+.dyadimagebottom,.triadimagebottom
+{
+	width:10%;
+	height:28px;
+	float:left;
+	position: relative;
+}
+
+.dyadtop
+{
+	width:90%;
+	height:24px;
+	float:left;
+	padding-top:4px;
+	cursor:pointer;
+	text-align:center;
+}
+
+.triadtop
+{
+	width:90%;
+	height:24px;
+	float:left;
+	padding-top:4px;
+	cursor:pointer;
+	text-align:center;
+	border-bottom:1px solid;
+}
+
+.dyadbottom,.triadbottom
+{
+	width:90%;
+	height:24px;
+	float:left;
+	cursor:pointer;
+	text-align:center;
+	padding-top:4px; 
+}
+
+.mousehoverdt {
+	background:#FC3;
+	float:left;
+	position:relative;
+}
+
+.mousehoverimgdt
+{
+	background: #FC3 url(../img/killTag.png) no-repeat right;
+	width:10%;
+	height:28px;
+}
+
+
+/*student list popup*/
+.popupcontainer
+{
+	width:306px;
+	height:342px;
+	padding-top:25px;
+}
+
+.tagpopuptop
+{
+	background:url(../img/tagpopuptop.png) no-repeat center;
+	width:306px;
+	height:45px;
+}
+.tagpopupmid
+{
+	background:url(../img/tagpopupmid.png) repeat-y center;
+	width:306px;
+	height:auto;
+}
+.tagpopupbot
+{
+	background:url(../img/tagpopupbot.png) no-repeat center;
+	width:306px;
+	height:17px;
+}
+
+.tagPopUpInner {
+	background:#fff;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	min-height:50px;
+	max-height:320px;
+	overflow-y:auto;
+	width:286px;
+	margin:0 auto;
+}
+
+.tagPopUpList {
+	color:#47708a;
+	font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	font-size:14px;
+	line-height:120%;
+	margin-left:10px;
+	cursor:pointer;
+}
+
+.tagPopUpListTable
+{
+	width:100%;
+}
+
+.tagPopUpListTable td {
+	height:40px!important;
+	vertical-align:middle!important;
+	display:table-cell!important;
+	margin-left:20px;
+	border-bottom:1px solid #f2f2f2;
+}
+
+.popuptable{
+  position:absolute;
+  z-index:10;   
+}
+
+.closebtn
+{
+	width:30px; height:30px; background:url("../img/fancybox.png") repeat scroll -40px 0 transparent; float: right;  position: relative;
+}
+
+.popup-closebtn
+{
+	background: url("../img/fancybox.png") repeat scroll -30px 0 transparent;
+    float: right;
+    height: 30px;
+    margin-right: -5px;
+	margin-top:15px;
+    position: relative;
+    width: 30px;
+}
+
+.GridViewScrollContainer
+{
+overflow:auto;
+position: relative;
+width:1100px;
+height:500px;
+margin:0;
+padding:0;
+overflow:scroll;
+}
+
+.tbl
+{
+border-spacing:0;
+margin:0;
+border-collapse:collapse;
+padding:0;
+width:auto;
+}
+
+.addrotimg
+{
+	background: url("../img/addimage.png") repeat scroll -30px 0 transparent;
+    height: 30px;
+    position: relative;
+    width: 37px;
+	margin-top:20px;
+}

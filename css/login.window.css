@@ -1,0 +1,370 @@
+@font-face {
+    font-family: 'source_sans_proregular';
+    src: url('fonts/sourcesanspro-regular-webfont.eot');
+    src: url('fonts/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/sourcesanspro-regular-webfont.woff') format('woff'),
+         url('fonts/sourcesanspro-regular-webfont.ttf') format('truetype'),
+         url('fonts/sourcesanspro-regular-webfont.svg#source_sans_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'source_sans_probold';
+    src: url('fonts/sourcesanspro-bold-webfont.eot');
+    src: url('fonts/sourcesanspro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/sourcesanspro-bold-webfont.woff') format('woff'),
+         url('fonts/sourcesanspro-bold-webfont.ttf') format('truetype'),
+         url('fonts/sourcesanspro-bold-webfont.svg#source_sans_probold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  background-color: #49708A;
+  font-family: 'source_sans_proregular';
+}
+
+.logonBaseBox {
+	background: #f4f4f4;
+	background: -moz-linear-gradient(48% 1% -90deg, #fff 0%, #f4f4f4 93%, #f4f4f4 96%);
+	background: -o-linear-gradient(-90deg, #fff 0%, #f4f4f4 93%, #f4f4f4 96%);
+	background: -webkit-gradient(linear, 48% 1%, 48% 98%, color-stop(0, #fff), color-stop(0.93, #f4f4f4), color-stop(0.96, #f4f4f4));
+	background: -webkit-linear-gradient(-90deg, #fff 0%, #f4f4f4 93%, #f4f4f4 96%);
+	background: linear-gradient(180deg, #fff 0%, #f4f4f4 93%, #f4f4f4 96%);
+	border: 1px solid #fff;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 2px 3px rgba(0,0,0,.15);
+	box-shadow: 0 2px 3px rgba(0,0,0,.15);
+	width:380px;
+	margin:90px auto 0 auto;
+        display: table;
+}
+
+.logonLogo {
+	background-image:  url('../img/synergy.logo.png');
+        //background-image:  none, url('../img/synergy.logo.svg'), url('../img/synergy.logo.png');
+        background-size: 259px 66px;
+        background-position:0 13px;
+        background-repeat: no-repeat;
+        
+	width:259px;
+	height: 80px;
+        margin: 44px 0 0 60px;
+}
+.sosLogo {
+	background-image:  url('../img/SOS2_Login_Screen-SOS2_logo.jpg');
+        background-image:  none, url('../img/SOS2_Login_Screen-SOS2_logo.jpg'), url('../img/SOS2_Login_Screen-SOS2_logo.jpg');
+        background-size: 298px 120px;
+        background-position:0 0px;
+        background-repeat: no-repeat;
+
+	width : 298px;
+	height: 120px;
+        margin: 15px 0 0 49px;
+                
+}
+.fcolno {
+    color: #999A9C;
+    font-size: 16px;
+}
+.lisy-style-type {
+    list-style-type: none;
+}
+
+.logonLogo  img{
+	margin-left: 48px;
+    margin-top: -25px;
+}
+
+.logonInputDiv, .logonInputDivTop {
+	width:300px;	
+	margin:30px 0 0 40px;
+}
+
+.logonInputDiv {
+	margin:10px 0 0 40px;
+}
+
+.logonInput {
+	background: #fff;
+	border: 1px solid #bfc0bf;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 4px 4px rgba(127,128,127,.2);
+	box-shadow: inset 0 4px 4px rgba(127,128,127,.2);
+	
+	width:100%;
+	height:40px;
+	text-align: center;
+	
+	color: #88abc2;
+	font-size: 18px;
+	line-height: 120%;
+	text-align: center;
+}
+
+.sosInput {
+	background: #f1f2f2;
+	border: 1px solid #bfc0bf;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 4px 4px rgba(127,128,127,.2);
+	box-shadow: inset 0 4px 4px rgba(127,128,127,.2);
+	
+	width:100%;
+	height:40px;
+	text-align: center;
+	
+	color: #b13d3d;
+	font-size: 18px;
+	line-height: 120%;
+	text-align: center;
+}
+
+
+
+.logonInput:active {
+	background: #fff;
+	border: 1px solid #bfc0bf;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 0 16px rgba(73,112,138,.3), inset 0 4px 4px rgba(127,128,127,.2);
+	box-shadow: 0 0 16px rgba(73,112,138,.3), inset 0 4px 4px rgba(127,128,127,.2);
+}
+
+/* Placeholder - .logonInputHint */
+ 
+::-webkit-input-placeholder{ 
+	
+	color: #88abc2;
+	font-family: 'source_sans_proregular';
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 120%;
+	text-align: center;
+}
+:-moz-placeholder{
+	color: #88abc2;
+	font-family: 'source_sans_proregular';
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;	
+}
+::-moz-placeholder{
+	color: #88abc2;
+	font-family: 'source_sans_proregular';
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+}
+input:-ms-input-placeholder { 
+	color: #88abc2;
+	font-family: 'source_sans_proregular';
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+}
+/* Placeholder - .logonInputHint */
+
+.logonSubmitBtn {
+	width:300px;
+	margin:20px 0 0 40px;
+	text-transform: capitalize;
+}
+
+.logonForgotBtn {
+	width:300px;
+	margin:10px 0 20px 40px;
+	text-transform: capitalize;
+}
+
+.logonSubmit, .logonForgot { /* Merged .logonSubmitLabel */
+	background: #cbcbcb;
+	background: -moz-linear-gradient(50% -1% -90deg, #ebf7f8 0%, #cdcece 93%, #cbcbcb 100%);
+	background: -o-linear-gradient(-90deg, #ebf7f8 0%, #cdcece 93%, #cbcbcb 100%);
+	background: -webkit-gradient(linear, 50% -1%, 50% 99%, color-stop(0, #ebf7f8), color-stop(0.93, #cdcece), color-stop(1, #cbcbcb));
+	background: -webkit-linear-gradient(-90deg, #ebf7f8 0%, #cdcece 93%, #cbcbcb 100%);
+	background: linear-gradient(180deg, #ebf7f8 0%, #cdcece 93%, #cbcbcb 100%);
+	border: 1px solid #999;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 2px 2px rgba(127,128,127,.3);
+	box-shadow: 0 2px 2px rgba(127,128,127,.3);
+	
+	width:100%;
+	height:40px;
+	cursor:pointer;
+	
+	color: #49708a;
+	font-family: 'source_sans_probold';
+	font-size: 18px;
+	line-height: 120%;
+	text-align: center;
+	text-shadow: 0 1px 0 #fff;
+}
+
+
+.logonSubmit:hover, .logonForgot:hover {
+	background: #9eb5c0;
+	background: -moz-linear-gradient(50% -1% -90deg, #cedce1 0%, #a1b8c2 93%, #9eb5c0 100%);
+	background: -o-linear-gradient(-90deg, #cedce1 0%, #a1b8c2 93%, #9eb5c0 100%);
+	background: -webkit-gradient(linear, 50% -1%, 50% 99%, color-stop(0, #cedce1), color-stop(0.93, #a1b8c2), color-stop(1, #9eb5c0));
+	background: -webkit-linear-gradient(-90deg, #cedce1 0%, #a1b8c2 93%, #9eb5c0 100%);
+	background: linear-gradient(180deg, #cedce1 0%, #a1b8c2 93%, #9eb5c0 100%);
+	border: 1px solid #999;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 2px 2px rgba(127,128,127,.3);
+	box-shadow: 0 2px 2px rgba(127,128,127,.3);
+	
+	color: #ebf7f8;
+	font-family:'source_sans_probold';
+	font-size: 18px;
+	line-height: 120%;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+}
+
+.sosSubmit, .sosForgot { /* Merged .logonSubmitLabel */
+	background: #f36f51; /* Old browsers */
+        background: -moz-linear-gradient(top, #f36f51 0%, #a81d21 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f36f51), color-stop(100%,#a81d21)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #f36f51 0%,#a81d21 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #f36f51 0%,#a81d21 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #f36f51 0%,#a81d21 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #f36f51 0%,#a81d21 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f36f51', endColorstr='#a81d21',GradientType=0 ); /* IE6-9 */ 
+	border: 1px solid #999;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	//-webkit-box-shadow: 0 2px 2px rgba(127,128,127,.3);
+	//box-shadow: 0 2px 2px rgba(127,128,127,.3);
+	
+	width:100%;
+	height:40px;
+	cursor:pointer;
+	
+	color: #FFF;
+	font-family: 'source_sans_probold';
+	font-size: 18px;
+	line-height: 120%;
+	text-align: center;
+	
+        
+        
+
+}
+
+
+.sosSubmit:hover, .sosForgot:hover {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a81d21+0,f36f51+100 */
+        background: #a81d21; /* Old browsers */
+        background: -moz-linear-gradient(top, #a81d21 0%, #f36f51 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a81d21), color-stop(100%,#f36f51)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #a81d21 0%,#f36f51 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #a81d21 0%,#f36f51 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #a81d21 0%,#f36f51 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #a81d21 0%,#f36f51 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a81d21', endColorstr='#f36f51',GradientType=0 ); /* IE6-9 */
+	border: 1px solid #999;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 2px 2px rgba(127,128,127,.3);
+	box-shadow: 0 2px 2px rgba(127,128,127,.3);
+	
+	color: #ebf7f8;
+	font-family:'source_sans_probold';
+	font-size: 18px;
+	line-height: 120%;
+	text-align: center;
+	text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+}
+
+.trialLink {
+	font-size: 16px;
+	line-height: 120%;
+	text-align: center;
+}
+
+.trialLink a {
+	color: #49708a;
+	text-decoration:none;
+}
+
+.trialLink a:hover {
+	color: #88abc2; 
+}
+
+.loginCopyright {
+	color: #87abc1;
+	font-size: 12px;
+	line-height: 120%;
+	text-align: center;
+	margin:16px 0 40px 0;
+}
+.loginCopyright1 {
+	color: #87abc1;
+        font-size: 12px;
+        line-height: 120%;
+        margin: 5px 0 10px;
+        text-align: center;
+    }
+.font {
+    font-size: 12px;
+    line-height: 120%;
+}
+.left {
+  float: left;
+  margin-left:10px; 
+  width:110px; 
+  margin-top: -28px;
+
+}
+.logotop{
+    padding-top: 5px;
+}
+
+.right {
+  float: left;
+  /*text-align: left;
+  margin: 2px 10px;
+  display: inline*/
+}
+
+input.error{
+    background: none repeat scroll 0 0 #FFDACE;
+}
+
+input.error::-webkit-input-placeholder{
+    color: #CD4225;
+}
+input.error:-moz-placeholder{
+	 color: #CD4225;
+}
+input.error::-moz-placeholder{
+	 color: #CD4225;
+}
+input.error:-ms-input-placeholder { 
+	 color: #CD4225;
+}
+
+.errormsg {
+	font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	color: #CD4225;
+	background: none repeat scroll 0 0 #FFDACE;
+	border:1px solid #CD4225;
+	width:300px;	
+	margin:36px 0 0 40px;
+	height:30px;
+	text-align:center;
+	padding-top:10px;
+}
+.textcolor {
+  float: right;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    text-align: right;
+    width: 50%;
+    }

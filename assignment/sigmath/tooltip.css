@@ -1,0 +1,80 @@
+a#tooltip1 {outline:none; }
+a#tooltip1 strong {line-height:30px;}
+a#tooltip1:hover {text-decoration:none;} 
+a#tooltip1 span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:-240px; margin-left:12px;
+    width:650px; line-height:16px;
+}
+a#tooltip1:hover span{
+    display:inline; position:absolute; color:#FFF;font-family:arial;
+    border:1px solid #DCA; background:#4679BD;}
+    
+/*CSS3 extras*/
+a#tooltip1 span
+{
+    border-radius:5px;
+    box-shadow: 5px 5px 8px #CCC;
+    text-align: left;
+}
+
+a#tooltip2 {outline:none; }
+a#tooltip2 strong {line-height:30px;}
+a#tooltip2:hover {text-decoration:none;} 
+a#tooltip2 span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:-580px; margin-left:12px;
+    width:650px; line-height:16px;
+}
+a#tooltip2:hover span{
+    display:inline; position:absolute; color:#FFF;
+    border:1px solid #DCA; background:#4679BD;}
+    
+/*CSS3 extras*/
+a#tooltip2 span
+{
+    border-radius:4px;
+    box-shadow: 5px 5px 8px #CCC;
+    text-align: left;
+}
+
+a#tooltip3 {outline:none; }
+a#tooltip3 strong {line-height:30px;}
+a#tooltip3:hover {text-decoration:none;} 
+a#tooltip3 span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:-160px; margin-left:12px;
+    width:650px; line-height:16px;
+}
+a#tooltip3:hover span{
+    display:inline; position:absolute; color:#FFF;
+    border:1px solid #DCA; background:#4679BD;}
+    
+/*CSS3 extras*/
+a#tooltip3 span
+{
+    border-radius:4px;
+    box-shadow: 5px 5px 8px #CCC;
+    text-align: left;
+}
+
+a#tooltip4 {outline:none; }
+a#tooltip4 strong {line-height:30px;}
+a#tooltip4:hover {text-decoration:none;} 
+a#tooltip4 span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:-485px; margin-left:12px;
+    width:650px; line-height:16px;
+}
+a#tooltip4:hover span{
+    display:inline; position:absolute; color:#FFF;
+    border:1px solid #DCA; background:#4679BD;}
+    
+/*CSS3 extras*/
+a#tooltip4 span
+{
+    border-radius:4px;
+    box-shadow: 5px 5px 8px #CCC;
+    text-align: left;
+    
+}

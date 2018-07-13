@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="400" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><defs></defs>
+<rect width="100%" height="100%" fill="#fff" stroke-width="0px"/>
+<text font-size="12px" font-family="sans-serif" font-weight="normal" text-anchor="middle" fill="black" x="32" y="200" transform="rotate(270,32,200)">percent covered</text>
+<path d="M65 292h315M65 264.5h315M65 237h315M65 209.5h315M65 182h315M65 154.5h315M65 127h315M65 99.5h315M65 72h315M65 44.5h315M65 17h315" stroke="#666"/>
+<path d="M65 295v-3M380 295v-3M62 292h3M62 264.5h3M62 237h3M62 209.5h3M62 182h3M62 154.5h3M62 127h3M62 99.5h3M62 72h3M62 44.5h3M62 17h3" stroke-width="1px" stroke="#333"/>
+<g stroke-width="2px" stroke="#333"><path d="M63 292h319"/>
+<path d="M65 15v279"/>
+</g>
+<g font-size="10px" font-family="Georgia" fill="#333"><g text-anchor="end"><text x="60" y="295">0</text>
+<text x="60" y="267.5">10</text>
+<text x="60" y="240">20</text>
+<text x="60" y="212.5">30</text>
+<text x="60" y="185">40</text>
+<text x="60" y="157.5">50</text>
+<text x="60" y="130">60</text>
+<text x="60" y="102.5">70</text>
+<text x="60" y="75">80</text>
+<text x="60" y="47.5">90</text>
+<text x="60" y="20">100</text>
+</g>
+<g text-anchor="end"><text y="304" x="225.5" transform="rotate(-90,222.5,301)">Virginia Studies</text>
+</g>
+</g>
+</svg>

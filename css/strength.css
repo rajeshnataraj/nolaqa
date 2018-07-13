@@ -1,0 +1,52 @@
+
+@charset "utf-8";
+/* CSS Document */
+
+.strength_meter{
+	height:46px;
+	width: 250px;
+	background:transparent;
+	float:left;
+}
+.strength_meter p{
+	font-size: 12px;
+}
+.strength_meter div{
+	height:23px;
+	width:100%;
+	height:23px;
+	text-align:left;
+	padding-left: 25px;
+	color:black;
+	font-weight:bold;
+	line-height:23px;
+}
+.passwordveryweak p{
+	color: #E32;
+}
+.passwordweak p{
+	color: #D61;
+}
+.passwordmedium p{
+	color: #CA0;
+}
+.passwordstrong p{
+	color: #0B2;
+}
+
+#txtpassword.strength.passwordveryweak{
+	background-color: #E88;
+	border-color: #E33!important
+}
+#txtpassword.strength.passwordweak{
+	background-color: #FFB78C;
+	border-color: #E83!important;
+}
+#txtpassword.strength.passwordmedium{
+	background-color: #FE8;
+	border-color: #EB0!important;
+}
+#txtpassword.strength.passwordstrong{
+	background-color: #6D8;
+	border-color: #0B2!important;
+}

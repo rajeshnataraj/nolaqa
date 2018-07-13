@@ -1,0 +1,127 @@
+* {
+
+	margin:0;
+
+	padding:0;
+
+}
+
+
+
+html, body {
+
+	margin:0;
+
+	padding:0;
+
+}
+
+
+
+#divcustomlightbox {
+
+	/*display:none;	*/
+
+	z-index:10000;	
+
+	left: 0;
+
+	top:0;
+
+	position:absolute;
+
+	background:#0078b7 !important; 
+
+	width:100%;
+
+	height:100%;
+
+}
+
+
+
+.btnprevclose {
+
+	position:relative;
+
+	float:left;
+
+	width:100%;
+
+	z-index:10002;
+
+	height:45px;
+
+	background-color:#0078b7;
+
+}
+
+
+
+.dialogTitleFullScr, .dialogTitleSmallFullScr, .dialogTitleMediumFullScr {
+
+	margin-left:2%;
+
+	color: #FFFFFF;
+
+    font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+
+    font-size: 2.6rem;
+
+	width:50%;
+
+	float:left;
+
+    line-height: 120%;
+
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.5);
+
+}
+
+
+
+.dialogTitleMediumFullScr {
+
+	font-size: 2.9rem;
+
+    margin-top: 2px;
+
+    width: auto;	
+
+}
+
+
+
+#divlbcontent, #divlbcontentmodule {
+
+	/*width:10%;
+
+	margin:0 auto 0 auto;*/
+
+	background:#FFF;
+
+	min-height:300px;
+
+	z-index:10001;	
+
+	float:left;
+
+	position:relative;
+
+}
+
+
+
+.diviplbottom {
+
+	position:relative;
+
+	height:45px;
+
+	background-color:#0078b7;	
+
+	width:100%;
+
+	float:left;
+
+}

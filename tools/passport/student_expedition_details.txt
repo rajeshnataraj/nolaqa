@@ -1,0 +1,478 @@
+<?php
+@include("../sessioncheck.php");
+
+$oper = isset($_REQUEST['oper']) ? $_REQUEST['oper'] : '';
+
+if($oper=="showassignments" and $oper != " " )
+{
+    $prgtaskid = (isset($_REQUEST['taskid'])) ? $_REQUEST['taskid'] : '';
+    $stdtaskid= explode("~",$prgtaskid);
+   
+   
+   $qryexpdetails=$ObjDB->QueryObject("SELECT a.fld_exp_id as expid, a.fld_startdate as sdate, a.fld_enddate as edate, a.fld_schedule_name as schname     
+                                    FROM itc_class_indasexpedition_master AS a LEFT JOIN  itc_class_exp_student_mapping AS b ON a.fld_id=b.fld_schedule_id
+                                    WHERE b.fld_student_id='".$stdtaskid[1]."' AND b.fld_schedule_id='".$stdtaskid[0]."' AND b.fld_flag='1' AND a.fld_delstatus='0'");
+   if($qryexpdetails->num_rows>0){
+       $rowexpdetails = $qryexpdetails->fetch_assoc();
+       extract($rowexpdetails);
+   }     
+     
+
+   $checkrstatusid = $ObjDB->SelectSingleValueInt("SELECT count(fld_id) FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_school_id='".$senshlid."' AND fld_user_id='".$indid."'");
+   
+/** to get the task, resource details and percentage of resorce **/
+
+    if($checkrstatusid == '0'){
+       
+        $resourcegroupids=$ObjDB->SelectSingleValue("select 
+                                                    GROUP_CONCAT(cnt.fld_id) 
+                                                from
+                                                    (SELECT 
+                                                        a.fld_id
+                                                    FROM
+                                                        itc_exp_resource_master AS a
+                                                    LEFT JOIN itc_exp_task_master AS b ON a.fld_task_id = b.fld_id
+                                                    LEFT JOIN itc_exp_destination_master AS c ON b.fld_dest_id = c.fld_id
+                                                    LEFT JOIN itc_exp_res_status AS d ON d.fld_res_id = a.fld_id
+                                                    LEFT JOIN itc_license_exp_mapping AS e ON c.fld_id = e.fld_dest_id
+                                                    LEFT JOIN itc_license_track AS f ON e.fld_license_id = f.fld_license_id
+                                                    LEFT JOIN itc_class_indasexpedition_master as g ON e.fld_license_id = g.fld_license_id
+                                                    where
+                                                        c.fld_exp_id = '".$expid."'
+                                                            AND g.fld_id = '".$stdtaskid[0]."'
+                                                            AND d.fld_school_id = '0'
+                                                            AND d.fld_user_id = '0'
+                                                            and d.fld_status = '1'
+                                                            and a.fld_delstatus = '0'
+                                                            and b.fld_delstatus = '0'
+                                                            and c.fld_delstatus = '0'
+                                                    GROUP BY a.fld_id) as cnt");
+       
+       /** to get the resource completed status **/
+
+       $rescomplete = $ObjDB->SelectSingleValueInt("SELECT COUNT(fld_id) FROM itc_exp_res_play_track WHERE fld_res_id IN (".$resourcegroupids.") AND fld_delstatus='0' AND fld_student_id='".$stdtaskid[1]."' AND fld_read_status='1'");
+       $totalresource=sizeof(explode(',',$resourcegroupids));
+       
+   }
+   else{
+       $resourcegroupids=$ObjDB->SelectSingleValue("select 
+                                                    GROUP_CONCAT(cnt.fld_id) 
+                                                from
+                                                    (SELECT 
+                                                        a.fld_id
+                                                    FROM
+                                                        itc_exp_resource_master AS a
+                                                    LEFT JOIN itc_exp_task_master AS b ON a.fld_task_id = b.fld_id
+                                                    LEFT JOIN itc_exp_destination_master AS c ON b.fld_dest_id = c.fld_id
+                                                    LEFT JOIN itc_exp_res_status AS d ON d.fld_res_id = a.fld_id
+                                                    LEFT JOIN itc_license_exp_mapping AS e ON c.fld_id = e.fld_dest_id
+                                                    LEFT JOIN itc_license_track AS f ON e.fld_license_id = f.fld_license_id
+                                                    LEFT JOIN itc_class_indasexpedition_master as g ON e.fld_license_id = g.fld_license_id
+                                                    where
+                                                        c.fld_exp_id = '".$expid."'
+                                                            AND g.fld_id = '".$stdtaskid[0]."'
+                                                            AND d.fld_school_id = '".$senshlid."'
+                                                            AND d.fld_user_id = '".$indid."'
+                                                            and d.fld_status = '1'
+                                                            and a.fld_delstatus = '0'
+                                                            and b.fld_delstatus = '0'
+                                                            and c.fld_delstatus = '0'
+                                                    GROUP BY a.fld_id) as cnt");
+       
+       
+       $rescomplete = $ObjDB->SelectSingleValueInt("SELECT COUNT(fld_id) FROM itc_exp_res_play_track WHERE fld_res_id IN (".$resourcegroupids.") AND fld_delstatus='0' AND fld_student_id='".$stdtaskid[1]."' AND fld_read_status='1'");
+       $totalresource=sizeof(explode(',',$resourcegroupids));
+       echo "Completed".$rescomplete;
+       echo "totalres".$totalresource;
+      
+   }
+    
+    if($totalresource==0)
+        {
+            $completeprogress=0;
+        }
+        else if($totalresource!=0)
+        {
+            $completeprogress=($rescomplete/$totalresource)*100;
+            $completeprogress=round($completeprogress,2);
+        }
+
+   /** Studnets expedition Name and destination,task, resorce details to show in booklet **/
+
+  $qrydestdetails=$ObjDB->QueryObject("SELECT a.fld_id as destid, a.fld_dest_name AS destname
+                                        FROM itc_exp_destination_master as a
+                                        LEFT JOIN itc_license_exp_mapping AS b ON a.fld_id = b.fld_dest_id
+                                        LEFT JOIN itc_license_track AS c ON b.fld_license_id = c.fld_license_id
+                                        LEFT JOIN itc_class_indasexpedition_master as d on b.fld_license_id=d.fld_license_id
+                                        WHERE a.fld_exp_id = '".$expid."' AND d.fld_id = '".$stdtaskid[0]."' AND c.fld_user_id='".$indid."' 
+                                            AND c.fld_school_id='".$schoolid."' AND a.fld_delstatus = '0' GROUP BY destid");
+      /*$qrydestdetails=$ObjDB->QueryObject("SELECT fld_id as destid,fld_dest_name AS destname 
+                                        FROM itc_exp_destination_master 
+                                        WHERE fld_exp_id='".$expid."' AND fld_delstatus='0'");*/
+   if($qrydestdetails->num_rows>0)
+    {
+       ?>
+       <div style="height:400px; overflow:auto;">
+       <?php
+        while($rowdestdetails = $qrydestdetails->fetch_assoc())
+        {
+            extract($rowdestdetails);
+                
+                $fieldtask1 = 'CONCAT("\'",a.fld_id,"\'")';
+                $grouptaskids1 = $ObjDB->SelectSingleValue("SELECT GROUP_CONCAT(".$fieldtask1.") 
+                                        FROM itc_exp_task_master as a 
+                                        LEFT JOIN itc_exp_res_status as b on a.fld_id=b.fld_task_id
+                                        WHERE a.fld_dest_id='".$destid."' AND b.fld_school_id='".$schoolid."' AND b.fld_user_id='".$indid."' AND b.fld_status='1' AND a.fld_delstatus='0'");
+
+                $selecttasks = $ObjDB->QueryObject("SELECT a.fld_id AS taskid 
+                                                    FROM itc_exp_task_master AS a
+                                                    LEFT JOIN itc_exp_res_status as b on a.fld_id=b.fld_task_id
+                                                    WHERE a.fld_dest_id='".$destid."' AND b.fld_school_id='".$schoolid."' AND b.fld_user_id='".$indid."' AND b.fld_status='1' AND a.fld_delstatus='0' ORDER BY a.fld_order");
+                if($selecttasks->num_rows>0) {
+                    while ($rowselecttasks = $selecttasks->fetch_assoc()) {
+                            extract($rowselecttasks);
+                            $fieldresvar1 = 'CONCAT("\'",a.fld_id,"\'")';
+                            $groupresids1 = $ObjDB->SelectSingleValue("SELECT GROUP_CONCAT(".$fieldresvar1.") 
+                                                                        FROM itc_exp_resource_master As a
+                                                                        LEFT JOIN itc_exp_res_status as b on a.fld_id=b.fld_res_id
+                                                                        WHERE a.fld_task_id='".$taskid."' AND a.fld_delstatus='0' AND b.fld_school_id='".$schoolid."' AND b.fld_user_id='".$indid."' AND b.fld_status='1'");
+                            $resreadcnt1 = $ObjDB->SelectSingleValueInt("SELECT COUNT(fld_id) FROM itc_exp_res_play_track WHERE fld_res_id IN (".$groupresids1.") AND fld_delstatus='0' AND fld_student_id='".$stdtaskid[1]."' AND fld_read_status='1'");
+                            if($resreadcnt1 == sizeof(explode(',',$groupresids1)))
+                            {
+                                $ObjDB->NonQuery("UPDATE itc_exp_task_play_track SET fld_read_status='1', fld_updated_by='".$uid."', fld_updated_date='".$date."' WHERE fld_task_id='".$taskid."' AND fld_delstatus='0' AND fld_student_id='".$stdtaskid[1]."'");
+
+                                $taskreadcnt1 = $ObjDB->SelectSingleValueInt("SELECT COUNT(fld_id) FROM itc_exp_task_play_track WHERE fld_task_id IN (".$grouptaskids1.") AND fld_delstatus='0' AND fld_student_id='".$stdtaskid[1]."' AND fld_read_status='1'");
+
+                                if($taskreadcnt1 === sizeof(explode(',',$grouptaskids1)))
+                                {
+                                    $ObjDB->NonQuery("UPDATE itc_exp_dest_play_track SET fld_read_status='1', fld_updated_by='".$uid."', fld_updated_date='".$date."' WHERE fld_dest_id='".$destid."' AND fld_delstatus='0' AND fld_student_id='".$stdtaskid[1]."'");
+                                }
+                            }
+                    }
+                }
+                /* Ends */
+                
+                $dstatusid = $ObjDB->SelectSingleValueInt("SELECT fld_id FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_dest_id='".$destid."' AND fld_school_id='".$schoolid."' AND fld_user_id='".$indid."'");
+                if($dstatusid != ''  and $dstatusid != NULL and $dstatusid != '0'){
+                    $dstatus = $ObjDB->SelectSingleValueInt("SELECT fld_status FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_id='".$dstatusid."' AND fld_dest_id='".$destid."' AND fld_school_id='".$schoolid."' AND fld_user_id='".$indid."'");
+                }          
+                else if($dstatus=='' or $dstatus=='0' or $dstatus==NULL)
+                {
+                    $createdids = $ObjDB->SelectSingleValue("SELECT GROUP_CONCAT(fld_id) FROM `itc_user_master` WHERE fld_profile_id IN (2,3) AND fld_delstatus='0'");
+
+                    $dstatus = $ObjDB->SelectSingleValue("SELECT fld_status FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_dest_id='".$destid."' AND fld_created_by IN (".$createdids.") AND fld_flag='1'");
+                }
+                if($dstatus == 1){
+                $taskcount=$ObjDB->SelectSingleValue("SELECT COUNT(fld_id) FROM itc_exp_dest_play_track 
+                                                    WHERE fld_student_id='".$stdtaskid[1]."' AND fld_exp_id='".$expid."' 
+                                                            AND fld_dest_id='".$destid."' AND fld_delstatus='0'");//AND fld_schedule_id='$stdtaskid[0]' 
+                if($taskcount>0){
+                    $taskinpcnt=$ObjDB->SelectSingleValue("SELECT COUNT(fld_id) FROM itc_exp_dest_play_track WHERE fld_student_id='".$stdtaskid[1]."' AND fld_exp_id='".$expid."' AND fld_dest_id='".$destid."'
+AND fld_read_status='0' AND fld_delstatus='0'");//count 0=>Completed; 1=>Inprogress for destination checkbox  - AND fld_schedule_id='$stdtaskid[0]' 
+                }
+                else{
+                    $taskinpcnt=1;
+                    
+                }
+                    
+              
+            ?>
+                  <ul class="tree" style="margin-left: 15px;">
+                        <li>
+                            <input type="checkbox" value="0" class="destcls destselect" id="dest_<?php echo $destid; ?>" <?php if($taskinpcnt==0){ echo 'checked="checked"';}else{ echo 'disabled="disabled"';} ?>>
+                            <label><?php echo $destname;?></label>
+                            <ul class='expanded'>
+                                <script>
+                                    
+                                 </script>
+                            <?php
+                               
+//                                $qrytaskdetails=$ObjDB->QueryObject("SELECT a.fld_id as taskid,a.fld_task_name AS taskname 
+//                                                                    FROM itc_exp_task_master AS a 
+//                                                                    LEFT JOIN itc_exp_res_status AS c ON c.fld_task_id=a.fld_id 
+//                                                                    WHERE c.fld_exp_id='".$expid."' AND a.fld_dest_id='".$destid."' AND c.fld_status='1'  AND a.fld_delstatus='0'");
+                                $qrytaskdetails=$ObjDB->QueryObject("SELECT fld_id as taskid,fld_task_name AS taskname 
+                                                                    FROM itc_exp_task_master 
+                                                                    WHERE fld_dest_id='".$destid."' AND fld_delstatus='0'");
+                                if($qrytaskdetails->num_rows>0)
+                                    {
+                                    while($rowtaskdetails = $qrytaskdetails->fetch_assoc())
+                                        {
+                                            extract($rowtaskdetails);
+                                            $tstatusid = $ObjDB->SelectSingleValueInt("SELECT fld_id FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_task_id='".$taskid."' AND fld_school_id='".$schoolid."' AND fld_user_id='".$indid."'");
+                                            if($tstatusid != ''  and $tstatusid != NULL and $tstatusid != '0'){
+                                                $tstatus = $ObjDB->SelectSingleValueInt("SELECT fld_status FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_id='".$tstatusid."' AND fld_task_id='".$taskid."' AND fld_school_id='".$schoolid."' AND fld_user_id='".$indid."'");
+                                            }
+                                            else if($tstatus=='' or $tstatus=='0' or $tstatus==NULL)
+                                            {
+                                                $createdids = $ObjDB->SelectSingleValue("SELECT GROUP_CONCAT(fld_id) FROM `itc_user_master` WHERE fld_profile_id IN (2,3) AND fld_delstatus='0'");
+
+                                                $tstatus = $ObjDB->SelectSingleValue("SELECT fld_status FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_task_id='".$taskid."' AND fld_created_by IN (".$createdids.") AND fld_flag='1'");
+                                            }
+                                            
+                                           if($tstatus == 1){ 
+                                            
+                                            $rescount=$ObjDB->SelectSingleValue("SELECT COUNT(fld_id) FROM itc_exp_task_play_track 
+                                                                                WHERE fld_student_id='".$stdtaskid[1]."' AND fld_exp_id='".$expid."'  
+                                                                                AND fld_dest_id='".$destid."' AND fld_task_id='".$taskid."' AND fld_delstatus='0'");//AND fld_schedule_id='".$stdtaskid[0]."'
+                                           if($rescount>0){
+                                                $resinpcnt=$ObjDB->SelectSingleValue("SELECT COUNT(fld_id) FROM itc_exp_task_play_track WHERE fld_student_id='".$stdtaskid[1]."' AND fld_exp_id='".$expid."' AND fld_dest_id='".$destid."' AND fld_task_id='".$taskid."'
+AND fld_read_status='0' AND fld_delstatus='0'");//0=>Completed; 1=>Inprogress for task checkbox - AND fld_schedule_id='".$stdtaskid[0]."' 
+                                            }
+                                            else{
+                                                $resinpcnt=1;
+
+                                            }
+                                             
+                                        ?>
+                                         <li>
+                                             <input type="checkbox"  class="tskcls select destselect_<?php echo $taskid; ?> destclsid_<?php echo $destid; ?>" id="tsk_<?php echo $taskid."~".$destid; ?>" <?php if($resinpcnt==0){ echo 'checked="checked"';}else{ echo 'disabled="disabled"';} ?>>
+                                            <label><?php echo $taskname;?></label>
+                                            <script>
+                                               
+                                            </script>
+                                            <ul>
+                                                 <?php 
+                                                    
+//                                                 $qryresourcedetails=$ObjDB->QueryObject("SELECT a.fld_id AS resid,a.fld_res_name AS resname 
+//                                                                                        FROM itc_exp_resource_master AS a 
+//                                                                                        LEFT JOIN itc_exp_res_status AS c ON c.fld_res_id=a.fld_id 
+//                                                                                        WHERE a.fld_task_id='".$taskid."' AND c.fld_status='1'  AND a.fld_delstatus='0'");
+                                                 $qryresourcedetails=$ObjDB->QueryObject("SELECT fld_id AS resid,fld_res_name AS resname
+                                                                                        FROM itc_exp_resource_master
+                                                                                        WHERE fld_task_id='".$taskid."' AND fld_delstatus='0'");
+                                                    
+                                                    if($qryresourcedetails->num_rows>0)
+                                                        {
+                                                        while($rowresourcedetails = $qryresourcedetails->fetch_assoc())
+                                                            {
+                                                                extract($rowresourcedetails);
+                                                                $rstatusid = $ObjDB->SelectSingleValueInt("SELECT fld_id FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_res_id='".$resid."' AND fld_school_id='".$schoolid."' AND fld_user_id='".$indid."'");
+                                                                if($rstatusid != ''  and $rstatusid != NULL and $rstatusid != '0'){
+                                                                    $rstatus = $ObjDB->SelectSingleValueInt("SELECT fld_status FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_id='".$rstatusid."' AND fld_res_id='".$resid."' AND fld_school_id='".$schoolid."' AND fld_user_id='".$indid."'");
+                                                                }
+                                                                if($rstatus=='' or $rstatus=='0' or $rstatus==NULL)
+                                                                {
+                                                                    $createdids = $ObjDB->SelectSingleValue("SELECT GROUP_CONCAT(fld_id) FROM `itc_user_master` WHERE fld_profile_id IN (2,3) AND fld_delstatus='0'");
+
+                                                                    $rstatus = $ObjDB->SelectSingleValueInt("SELECT fld_status FROM itc_exp_res_status WHERE fld_exp_id='".$expid."' AND fld_res_id='".$resid."' AND fld_created_by IN (".$createdids.") AND fld_flag='1'");
+                                                                }
+                                                                if($rstatus == 1){
+                                                                $rescount1=$ObjDB->SelectSingleValue("SELECT COUNT(fld_id) FROM itc_exp_res_play_track 
+                                                                                WHERE fld_student_id='".$stdtaskid[1]."' AND fld_exp_id='".$expid."'  
+                                                                                AND fld_dest_id='".$destid."' AND fld_task_id='".$taskid."' AND fld_res_id='".$resid."' AND fld_delstatus='0'");//AND fld_schedule_id='".$stdtaskid[0]."'
+                                                                if($rescount1>0){
+                                                                    $resinpcnt1=$ObjDB->SelectSingleValue("SELECT COUNT(fld_id) FROM itc_exp_res_play_track 
+                                                                                                        WHERE fld_student_id='".$stdtaskid[1]."' AND fld_exp_id='".$expid."'  
+                                                                                                        AND fld_dest_id='".$destid."' AND fld_task_id='".$taskid."' AND fld_res_id='".$resid."' AND fld_read_status='0' AND fld_delstatus='0'");//0=>Completed; 1=>Inprogress for task checkbox  AND fld_schedule_id='".$stdtaskid[0]."'
+                                                                }
+                                                                else{
+                                                                    $resinpcnt1=1;
+
+                                                                }
+                                                               /*echo "SELECT a.varValue AS sessiontime FROM itc_exp_scorm_track as a
+                                                                                                        JOIN itc_exp_res_play_track as b on b.fld_id=a.SCOInstanceID
+                                                                                                        WHERE a.varName='cmi.core.total_time' AND b.fld_student_id='".$stdtaskid[1]."' AND b.fld_res_id='".$resid."' AND fld_read_status='1'";//AND b.fld_delstatus='0'*/
+                                                                $qrysessiontime=$ObjDB->QueryObject("SELECT a.varValue AS sessiontime FROM itc_exp_scorm_track as a
+                                                                                                        JOIN itc_exp_res_play_track as b on b.fld_id=a.SCOInstanceID
+                                                                                                        WHERE a.varName='cmi.core.total_time' AND b.fld_student_id='".$stdtaskid[1]."' AND b.fld_res_id='".$resid."' AND fld_read_status='1' ");//AND b.fld_delstatus='0'
+                                                                //$arrtime=array();
+                                                                //$arrtime[]=$sessiontime;
+                                                                 if($qrysessiontime->num_rows>0)
+                                                                {
+                                                                    while($rowsessiontime=$qrysessiontime->fetch_assoc())
+                                                                    {
+                                                                        extract($rowsessiontime);
+                                                                        $arrtime[]=$sessiontime;
+                                                                    }
+                                                                }
+                                                                $sessiontime1='';
+                                                                for($i=0;$i<sizeof($arrtime);$i++)
+                                                                {  
+                                                                    $j = $i+1;
+                                                                    if($sessiontime1=='')
+                                                                        $sessiontime1="$j. ".$arrtime[$i];
+                                                                    else
+                                                                        $sessiontime1=$sessiontime1."\n"."$j. ".$arrtime[$i];
+                                                                } 
+                                                                
+                                                            ?>
+                                                            <li>
+                                                                <input title="<?php echo $sessiontime1;?>" type="checkbox" class="resd select_<?php echo $taskid ;?> rescls_<?php echo $resid ;?> destresid_<?php echo $destid; ?>" id="res_<?php echo $taskid."~".$resid."~".$destid;?>" <?php if($resinpcnt1==0){ echo 'checked="checked"';}else{ echo 'disabled="disabled"';} ?>>
+                                                                <label title="<?php echo $sessiontime1;?>"><?php echo $resname;?></label>
+                                                            </li>
+
+/**
+ Get the details from the below js for the anymore details 
+
+**/
+
+                                                             <script>
+                                                                 $(".select").click(function(e){ 
+                                                                     var tid=this.id;
+                                                                    // alert("Tsk:"+tid);
+                                                                     var untask = tid.split("_");
+                                                                     var tid=tid.replace("tsk_", "res_"); 
+                                                                    $('.ZebraDialogOverlay').css("z-index","20000");
+                                                                    $('.ZebraDialog').css("z-index","20000");
+                                                                    $('.ZebraDialogOverlay').removeClass('ZebraDialogOverlay').addClass('ZebraDialogOverlay1');
+                                                                    $('#gantt_here').css("opacity","0.40");
+                                                                    $('#fancybox-wrap').css("opacity","0.40");
+                                                                    $.Zebra_Dialog('Are you sure you want to assign this task again?',
+                                                                    {
+                                                                        'type': 'confirmation',
+                                                                        'buttons': [
+                                                                            {caption: 'No', callback: function() { //$('.ZebraDialog').removeClass('ZebraDialog'); 
+                                                                                var tid1=tid.replace("res_", "");
+                                                                                tid1=tid1.split("~");
+                                                                                $('.destselect_'+tid1[0]).prop('checked', true);
+                                                                                $('.destselect_'+tid1[0]).prop('disabled', false);
+                                                                                $('.ZebraDialog').remove();
+                                                                                $('.ZebraDialogOverlay1').remove();
+                                                                                $('#gantt_here').css("opacity", "");
+                                                                                $('#fancybox-wrap').css("opacity", "");
+                                                                            }},
+                                                                            {caption: 'Yes', callback: function() {
+                                                                                fn_taskuncheck(untask[1],'<?php echo $stdtaskid[1];?>','<?php echo $stdtaskid[0];?>','<?php echo $expid;?>');
+                                                                                $('.ZebraDialogOverlay').removeClass('ZebraDialogOverlay').addClass('ZebraDialogOverlay1');
+                                                                                $('.ZebraDialog').remove();
+                                                                                $('.ZebraDialogOverlay1').remove();
+                                                                                $('#gantt_here').css("opacity", "");
+                                                                                $('#fancybox-wrap').css("opacity", "");
+                                                                                var tid1=tid.replace("res_", "");
+                                                                                tid1=tid1.split("~");
+                                                                                $('.destselect_'+tid1[0]).prop('checked', false);
+                                                                                $('.destselect_'+tid1[0]).prop('disabled', true);
+                                                                                $('.select_'+tid1[0]).each(function(){
+                                                                                $('#dest_'+tid1[1]).prop('checked', false);
+                                                                                $('#dest_'+tid1[1]).prop('disabled', true);
+                                                                                $('.select_'+tid1[0]).prop('checked', false);
+                                                                                $('.select_'+tid1[0]).prop('disabled', true);
+                                                                               });
+                                                                            }},
+                                                                        ]
+                                                                    });
+                                                                   });
+
+                                                                $(".resd").click(function(e){  
+                                                                    var id=this.id;
+                                                                    //alert(id);
+                                                                    var unres = id.split("_");
+                                                                    var reid=id.replace("res_", "");
+                                                                    $('.ZebraDialogOverlay').css("z-index","20000");
+                                                                    $('.ZebraDialog').css("z-index","20000");
+                                                                    $('.ZebraDialogOverlay').removeClass('ZebraDialogOverlay').addClass('ZebraDialogOverlay1');
+                                                                    $('#gantt_here').css("opacity","0.40");
+                                                                    $('#fancybox-wrap').css("opacity","0.40");
+                                                                    $.Zebra_Dialog('Are you sure you want to assign this resource again?',
+                                                                    {
+                                                                        'type': 'confirmation',
+                                                                        'buttons': [
+                                                                            {caption: 'No', callback: function() { //$('.ZebraDialog').removeClass('ZebraDialog'); 
+                                                                                var resid1=reid.split("~");
+                                                                                $('.rescls_'+resid1[1]).prop('checked', true);
+                                                                                $('.rescls_'+resid1[1]).prop('disabled', false);
+                                                                                $('#tsk_<?php echo $taskid;?>').attr('checked', true);
+                                                                                $('#tsk_<?php echo $taskid;?>').attr('disabled', false);
+                                                                                $('#dest_<?php echo $destid; ?>').attr('checked', true);
+                                                                                $('#dest_<?php echo $destid; ?>').attr('disabled', false);
+                                                                                $('.ZebraDialog').remove();
+                                                                                $('.ZebraDialogOverlay1').remove();
+                                                                                $('#gantt_here').css("opacity", "");
+                                                                                $('#fancybox-wrap').css("opacity", "");
+                                                                            }},
+                                                                            {caption: 'Yes', callback: function() {
+                                                                                fn_resuncheck(unres[1],'<?php echo $stdtaskid[1];?>','<?php echo $stdtaskid[0];?>','<?php echo $expid;?>');
+                                                                                $('.ZebraDialogOverlay').removeClass('ZebraDialogOverlay').addClass('ZebraDialogOverlay1');
+                                                                                $('.ZebraDialog').remove();
+                                                                                $('.ZebraDialogOverlay1').remove();
+                                                                                $('#gantt_here').css("opacity", "");
+                                                                                $('#fancybox-wrap').css("opacity", ""); 
+                                                                                var reid=id.replace("res_", "");
+                                                                                var reid = reid.split("~");
+                                                                                //fn_uncheckres(reid[1]);
+                                                                                $('.rescls_'+reid[1]).prop('checked', false);
+                                                                                $('.rescls_'+reid[1]).prop('disabled', true);
+                                                                                $('.destselect_'+reid[0]).prop('checked', false);
+                                                                                $('.destselect_'+reid[0]).prop('disabled', true);
+                                                                                $('#dest_'+reid[2]).attr('checked', false);
+                                                                                $('#dest_'+reid[2]).attr('disabled', true);
+                                                                            }},
+                                                                        ]
+                                                                    });
+                                                                });
+
+
+                                                                $(".destselect").click(function(e){ 
+                                                                    var dstid=this.id;
+                                                                    //alert("Des:"+dstid);
+                                                                    var undest = dstid.split("_");
+                                                                    var dstid=dstid.replace("dest_", "tsk_");
+                                                                    $('.ZebraDialogOverlay').css("z-index","20000");
+                                                                    $('.ZebraDialog').css("z-index","20000");
+                                                                    $('.ZebraDialogOverlay').removeClass('ZebraDialogOverlay').addClass('ZebraDialogOverlay1');
+                                                                    $('#gantt_here').css("opacity","0.40");
+                                                                    $('#fancybox-wrap').css("opacity","0.40");
+                                                                    $.Zebra_Dialog('Are you sure you want to assign this destination again?',
+                                                                    {
+                                                                        'type': 'confirmation',
+                                                                        'buttons': [
+                                                                            {caption: 'No', callback: function() { //$('.ZebraDialog').removeClass('ZebraDialog'); 
+                                                                              
+                                                                               var destid1=dstid.replace("tsk_", "");
+                                                                                $('#dest_'+destid1).prop('checked', true);
+                                                                                $('#dest_'+destid1).prop('disabled', false);
+                                                                                $('.ZebraDialog').remove();
+                                                                                $('.ZebraDialogOverlay1').remove();
+                                                                                $('#gantt_here').css("opacity", "");
+                                                                                $('#fancybox-wrap').css("opacity", "");
+                                                                            }},
+                                                                            {caption: 'Yes', callback: function() {
+                                                                                fn_destuncheck(undest[1],'<?php echo $stdtaskid[1];?>','<?php echo $stdtaskid[0];?>','<?php echo $expid;?>');
+                                                                                $('.ZebraDialogOverlay').removeClass('ZebraDialogOverlay').addClass('ZebraDialogOverlay1');
+                                                                                $('.ZebraDialog').remove();
+                                                                                $('.ZebraDialogOverlay1').remove();
+                                                                                $('#gantt_here').css("opacity", "");
+                                                                                $('#fancybox-wrap').css("opacity", ""); 
+                                                                                var dstid1=dstid.replace("tsk_", "");
+                                                                                $('#dest_'+dstid1).prop('checked', false);
+                                                                                $('#dest_'+dstid1).prop('disabled', true);
+                                                                                $('.destclsid_'+dstid1).each(function(){
+                                                                                     $('.destclsid_'+dstid1).prop('checked', false);
+                                                                                     $('.destclsid_'+dstid1).prop('disabled', true);
+                                                                                     $('.destresid_'+dstid1).prop('checked', false);
+                                                                                     $('.destresid_'+dstid1).prop('disabled', true);
+                                                                                });
+                                                                            }},
+                                                                        ]
+                                                                    });
+                                                                  });
+                                                            </script>
+                                                           
+                                                             <?php
+                                                        }
+                                                    }
+                                                    }
+                                                    ?>
+                                            </ul>
+                                        </li>
+                                    <?php
+                                    }
+                                }
+                                }
+                                ?>
+                            </ul>
+                        </li>
+                    </ul>
+            <?php
+        }
+        }
+        ?>
+       </div>
+        <?php
+    }
+
+}
+
+
+

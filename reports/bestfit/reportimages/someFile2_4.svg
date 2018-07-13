@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="400" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><defs></defs>
+<rect width="100%" height="100%" fill="#fff" stroke-width="0px"/>
+<text font-size="12px" font-family="sans-serif" font-weight="normal" text-anchor="middle" fill="black" x="32" y="200" transform="rotate(270,32,200)">percent covered</text>
+<path d="M65 316h315M65 286.1h315M65 256.2h315M65 226.3h315M65 196.4h315M65 166.5h315M65 136.6h315M65 106.7h315M65 76.8h315M65 46.9h315M65 17h315" stroke="#666"/>
+<path d="M65 319v-3M222.5 319v-3M380 319v-3M62 316h3M62 286.1h3M62 256.2h3M62 226.3h3M62 196.4h3M62 166.5h3M62 136.6h3M62 106.7h3M62 76.8h3M62 46.9h3M62 17h3" stroke-width="1px" stroke="#333"/>
+<g stroke-width="2px" stroke="#333"><path d="M63 316h319"/>
+<path d="M65 15v303"/>
+</g>
+<g font-size="10px" font-family="Georgia" fill="#333"><g text-anchor="end"><text x="60" y="319">0</text>
+<text x="60" y="289.1">10</text>
+<text x="60" y="259.2">20</text>
+<text x="60" y="229.3">30</text>
+<text x="60" y="199.4">40</text>
+<text x="60" y="169.5">50</text>
+<text x="60" y="139.6">60</text>
+<text x="60" y="109.7">70</text>
+<text x="60" y="79.8">80</text>
+<text x="60" y="49.9">90</text>
+<text x="60" y="20">100</text>
+</g>
+<g text-anchor="end"><text y="328" x="146.75" transform="rotate(-90,143.75,325)">Kindergarten</text>
+<text y="328" x="304.25" transform="rotate(-90,301.25,325)">Grade 5</text>
+</g>
+</g>
+</svg>

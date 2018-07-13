@@ -1,0 +1,32 @@
+RewriteEngine on
+#Header set Access-Control-Allow-Origin "http://d3tmwyvterozff.cloudfront.net"
+RewriteCond %{REQUEST_URI} .*\.(flv)
+RewriteRule ^uploaddir/synergy-s3/modules(.*)$ http://d3tmwyvterozff.cloudfront.net/modules$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^pitsco.info$ [NC]
+RewriteRule ^(.*)$ http://itc.pitsco.com/$1 [R=301,L]
+
+
+SetEnvIf User-Agent ".internal dummy connection." loopback
+AddType image/svg+xml svg svgz
+AddEncoding gzip svgz
+
+<FilesMatch "\.(mp3)$">
+Header set Cache-Control "max-age=0, private, no-store, no-cache, must-revalidate"
+</FilesMatch>
+
+Options -Indexes
+
+<ifModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/xml text/css text/plain
+  AddOutputFilterByType DEFLATE image/svg+xml application/xhtml+xml application/xml
+  AddOutputFilterByType DEFLATE application/rdf+xml application/rss+xml application/atom+xml
+  AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-otf
+  AddOutputFilterByType DEFLATE font/truetype font/opentype
+</ifModule>
+
+#ExpiresActive On
+#<filesMatch "\.(ico|flv|jpg|jpeg|png|gif|css|js)$">
+#ExpiresDefault A1
+#Header append Cache-Control must-revalidate
+#</filesMatch>

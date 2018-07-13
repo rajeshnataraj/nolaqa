@@ -1,0 +1,77 @@
+/*table.treetable span.indenter {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  width: 19px;
+}
+
+table.treetable span.indenter a {
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  text-decoration: none;
+  width: 19px;
+}*/
+
+table.treetable span.indenter {
+display: inline-block;
+margin: 0;
+padding: 0;
+text-align: right;
+user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-o-user-select: none;
+-webkit-user-select: none;
+width: 19px;
+}
+
+table.treetable span.indenter a {
+background-position: left center;
+background-repeat: no-repeat;
+display: inline-block;
+text-decoration: none;
+width: 19px;
+}
+
+table.treetable span {
+background-position: center left;
+background-repeat: no-repeat;
+padding: .2em 0 .2em 1.5em;
+}
+
+table.treetable span a {
+margin: -14px 0 0 -42px;
+position: absolute;
+}
+
+table.treetable tr.collapsed span.indenter a {
+background-image: url(../img/expand.png);
+}
+
+table.treetable tr.expanded span.indenter a {
+background-image: url(../img/collapse.png);
+}
+
+.progressUnitTitle {
+color: #48708a;
+font-family: 'source_sans_probold';
+font-size: 13px;
+line-height: 120%;
+text-shadow: 0 2px 0 #fff;
+}
+
+.progressHeaderFill {
+background: #f0f0f0;
+background: -moz-linear-gradient(50% 0% -90deg, #fff 0%, #f0f0f0 93%, #f0f0f0 96%);
+background: -o-linear-gradient(-90deg, #fff 0%, #f0f0f0 93%, #f0f0f0 96%);
+background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0, #fff), color-stop(0.93, #f0f0f0), color-stop(0.96, #f0f0f0));
+background: -webkit-linear-gradient(-90deg, #fff 0%, #f0f0f0 93%, #f0f0f0 96%);
+background: linear-gradient(180deg, #fff 0%, #f0f0f0 93%, #f0f0f0 96%);
+}

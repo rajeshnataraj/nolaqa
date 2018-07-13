@@ -1,0 +1,93 @@
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">	
+	<link type="text/css" rel="stylesheet" href="css/gumby.hybrid.css">
+    <link type="text/css" rel="stylesheet" href="css/ui.css">
+    <link type="text/css" rel="stylesheet" href="css/style-icons.css">
+	<script src="jquery-1.8.3.min.js" type="text/javascript" language="javascript"></script>
+    <script src="jquery.ui.touch-punch.min.js" type="text/javascript" language="javascript"></script>  
+    <script src="ipad-assignment.js" type="text/javascript" language="javascript"></script>         
+    <style>
+		.diviplbottom, .btnprevclose
+		{
+			background-color:#0078b7 !important;
+		}
+		
+	</style>
+</head>
+<body style="overflow: hidden;">
+    <div title="Synergy ITC" id="divcustomlightbox" style="display: block;">        
+        <div class="btnprevclose">
+        	<p style="width:90%" class="dialogTitleFullScr">Standard Units 1.0.0</p>
+        	<a class="icon-synergy-close-dark" onclick="fn_closescreen()" href="javascript:void(0);"></a>
+        </div>
+        <div id="divlbcontent" style="display: block;">        
+        		
+        		<iframe frameborder="0" style="overflow:scroll;" src="http://itc.pitsco.com/api/assignment-sigmath-questioniframe.php?id=920" id="ifrm"></iframe>
+
+		        <div style="padding-right:30px;">
+		            <div class="right five columns">
+		                <p style="height: 5%;line-height: 30px;font-size: 20px;" class="btn secondary five columns" id="ctnbtn">
+		                    <a onclick="fn_anscheck(180,101,1,920,0,2892);">Continue</a>
+		                </p>                   	
+		             </div> 
+		        </div>
+
+		        <input type="hidden" value="180" id="scheduleid">   
+		        <input type="hidden" value="101" id="lid"> 
+		        <input type="hidden" id="qorder" value="2">
+		        <input type="hidden" value="1" id="current_qorder">
+		        <input type="hidden" value="2892" id="maxid">
+		        <input type="hidden" value="1" id="testtype">
+		</div>
+        <div class="diviplbotto" id="diviplbotto"><p id="fottitle" class="dialogTitleFullScr">Diagnostic Test</p></div> 
+    </div>	 
+    <script type="text/javascript" language="javascript">
+    	
+
+    	$(document).ready(function() {
+			$('body').css('overflow','hidden');
+			
+			var cssObjOuter = {		
+			'display' : 'block',		
+			'width' : $('body').width(),		
+			'height' : $(window).height()		
+			};		
+			
+			var cssObjInner = {		
+			'display' : 'block',		
+			'width' : $('body').width(),		
+			'height' : $(window).height() - 90		
+			};
+			
+			$('#divcustomlightbox').css(cssObjOuter);		
+			$('#divlbcontent').css(cssObjInner);	
+
+			alert("Outer "+$('#divcustomlightbox').width()+" "+$('#divcustomlightbox').height());
+
+			alert("inner " +$('#divlbcontent').width()+" "+$('#divlbcontent').height());	
+
+			
+			$('iframe').attr('width',$('#divlbcontent').width());
+			$('iframe').attr('height',$('#divlbcontent').height());
+
+			alert("iframe " +$('#divlbcontent iframe').width()+" "+$('#divlbcontent iframe').height());	
+			$(document).scrollTop(0);
+
+
+			
+		});
+		
+		document.ontouchstart = function(e){ 
+		    e.preventDefault(); 
+		}
+
+    </script>
+    
+
+    <input type="hidden" value="88" id="uid">
+    <script>		
+		//setTimeout('fn_diagnosticstart(180,101,1)',500);	
+    </script>
+    </body></html>

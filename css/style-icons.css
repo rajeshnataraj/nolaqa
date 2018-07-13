@@ -1,0 +1,532 @@
+
+/* chandra*/
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts4/icomoon.eot?8tnfz9');
+  src:  url('fonts4/icomoon.eot?8tnfz9#iefix') format('embedded-opentype'),
+    url('fonts4/icomoon.ttf?8tnfz9') format('truetype'),
+    url('fonts4/icomoon.woff?8tnfz9') format('woff'),
+    url('fonts4/icomoon.svg?8tnfz9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size:2em;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-documents:before {
+  content: "\1f322";
+}
+.icon-global_documents:before {
+  content: "\1f323";
+}
+
+@font-face {
+	font-family: 'Synergy_itc_v2';
+	src:url('fonts/Synergy_itc_v2.eot');
+	src:url('fonts/Synergy_itc_v2.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Synergy_itc_v2.woff') format('woff'),
+		url('fonts/Synergy_itc_v2.ttf') format('truetype'),
+		url('fonts/Synergy_itc_v2.svg#Synergy_itc_v2') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SITC_Expeditions_v1';
+	src:url('fonts/SITC_Expeditions_v1.eot?2ujuu4');
+	src:url('fonts/SITC_Expeditions_v1.eot?#iefix2ujuu4') format('embedded-opentype'),
+		url('fonts/SITC_Expeditions_v1.woff?2ujuu4') format('woff'),
+		url('fonts/SITC_Expeditions_v1.ttf?2ujuu4') format('truetype'),
+		url('fonts/SITC_Expeditions_v1.svg?2ujuu4#SITC_Expeditions_v1') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'Synergy_itc_v2';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'SITC_Expeditions_v1';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Activity:before {
+	content: "\e600";
+}
+.icon-Destination:before {
+	content: "\e601";
+}
+.icon-Information:before {
+	content: "\e602";
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"]:before {
+*/
+.icon-synergy-admin:before, .icon-synergy-diag-mastery:before, .icon-synergy-district:before, .icon-synergy-school:before, .icon-synergy-home-purchase:before, .icon-synergy-class:before, .icon-synergy-subject:before, .icon-synergy-tags:before, .icon-synergy-tag:before, .icon-synergy-wait:before, .icon-synergy-settings:before, .icon-synergy-tools:before, .icon-synergy-elements-a:before, .icon-synergy-elements:before, .icon-synergy-add-small:before, .icon-synergy-close:before, .icon-synergy-delete:before, .icon-synergy-add:before, .icon-synergy-warning:before, .icon-synergy-locked:before, .icon-synergy-trash:before, .icon-synergy-edit:before, .icon-synergy-mail:before, .icon-synergy-lecture:before, .icon-synergy-licenses:before, .icon-synergy-license:before, .icon-synergy-users:before, .icon-synergy-delete-user:before, .icon-synergy-add-user:before, .icon-synergy-user:before, .icon-synergy-calendar:before, .icon-synergy-location:before, .icon-synergy-library:before, .icon-synergy-home:before, .icon-synergy-idea:before, .icon-synergy-help-a:before, .icon-synergy-close-dark:before, .icon-synergy-delete-dark:before, .icon-synergy-add-dark:before, .icon-synergy-close-small:before, .icon-synergy-delete-small:before, .icon-synergy-questions:before, .icon-synergy-openquestions:before, .icon-synergy-power:before, .icon-synergy-folder-a:before, .icon-synergy-reports:before, .icon-synergy-edit-doc:before, .icon-synergy-close-doc:before, .icon-synergy-delete-doc:before, .icon-synergy-add-doc:before, .icon-synergy-doc-ok:before, .icon-synergy-key:before, .icon-synergy-unlocked:before, .icon-synergy-search-b:before, .icon-synergy-search-a:before, .icon-synergy-create:before, .icon-synergy-grid-view:before, .icon-synergy-icon-view:before, .icon-synergy-modules:before, .icon-synergy-document:before, .icon-synergy-tablet:before, .icon-synergy-dashboard:before, .icon-synergy-units:before, .icon-synergy-courses:before, .icon-synergy-newmail:before, .icon-synergy-tests:before, .icon-synergy-lessons:before, .icon-synergy-activities:before, .icon-synergy-products:before, .icon-synergy-clock:before, .icon-synergy-view:before ,.icon-columns-extend:before, .icon-synergy-repository:before, .icon-synergy-pd:before{
+	font-family: 'Synergy_itc_v2';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*-- Arun ---*/
+.icon-synergy-admin, .icon-synergy-diag-mastery, .icon-synergy-district, .icon-synergy-school, .icon-synergy-home-purchase, .icon-synergy-class, .icon-synergy-subject, .icon-synergy-tags, .icon-synergy-tag, .icon-synergy-wait, .icon-synergy-settings, .icon-synergy-tools, .icon-synergy-elements-a, .icon-synergy-elements, .icon-synergy-add-small, .icon-synergy-close, .icon-synergy-delete, .icon-synergy-add, .icon-synergy-warning, .icon-synergy-locked, .icon-synergy-trash, .icon-synergy-edit, .icon-synergy-mail, .icon-synergy-lecture, .icon-synergy-licenses, .icon-synergy-license, .icon-synergy-users, .icon-synergy-delete-user, .icon-synergy-add-user, .icon-synergy-user, .icon-synergy-calendar, .icon-synergy-location, .icon-synergy-library, .icon-synergy-home, .icon-synergy-idea, .icon-synergy-help-a, .icon-synergy-close-dark, .icon-synergy-delete-dark, .icon-synergy-add-dark, .icon-synergy-close-small, .icon-synergy-delete-small, .icon-synergy-questions, .icon-synergy-openquestions, .icon-synergy-power, .icon-synergy-folder-a, .icon-synergy-reports, .icon-synergy-edit-doc, .icon-synergy-close-doc, .icon-synergy-delete-doc, .icon-synergy-add-doc, .icon-synergy-doc-ok, .icon-synergy-key, .icon-synergy-unlocked, .icon-synergy-search-b, .icon-synergy-search-a, .icon-synergy-create, .icon-synergy-grid-view, .icon-synergy-icon-view, .icon-synergy-modules, .icon-synergy-document, .icon-synergy-tablet, .icon-synergy-dashboard, .icon-synergy-units, .icon-synergy-courses, .icon-synergy-newmail, .icon-synergy-tests, .icon-synergy-lessons, .icon-synergy-activities, .icon-synergy-products, .icon-synergy-clock, .icon-synergy-view,.icon-columns-extend, .icon-Activity, .icon-Destination, .icon-Information, .icon-synergy-repository, .icon-synergy-pd {
+	font-size:2em;
+	margin-top:10px;
+	color: #6d99b2;
+	text-align: center;
+	text-shadow: 0 1px 1px #fff;
+}
+
+/*-- Arun ---*/
+.icon-synergy-admin:before {
+	content: "\e01b";
+}
+.icon-synergy-diag-mastery:before {
+	content: "\e01c";
+}
+.icon-synergy-district:before {
+	content: "\e01e";
+}
+.icon-synergy-school:before {
+	content: "\e01a";
+}
+.icon-synergy-home-purchase:before {
+	content: "\e014";
+}
+.icon-synergy-class:before {
+	content: "\e011";
+}
+.icon-synergy-subject:before {
+	content: "\e00f";
+}
+.icon-synergy-tags:before {
+	content: "\e024";
+}
+.icon-synergy-tag:before {
+	content: "\e025";
+}
+.icon-synergy-wait:before {
+	content: "\e028";
+}
+.icon-synergy-settings:before {
+	content: "\e029";
+}
+.icon-synergy-tools:before {
+	content: "\e02a";
+}
+.icon-synergy-elements-a:before {
+	content: "\e02b";
+}
+.icon-synergy-elements:before {
+	content: "\e02c";
+}
+.icon-synergy-add-small:before {
+	content: "\e000";
+}
+.icon-synergy-close:before {
+	content: "\e001";
+}
+.icon-synergy-delete:before {
+	content: "\e002";
+}
+.icon-synergy-add:before {
+	content: "\e003";
+}
+.icon-synergy-warning:before {
+	content: "\e004";
+}
+.icon-synergy-locked:before {
+	content: "\e00d";
+}
+.icon-synergy-trash:before {
+	content: "\e00e";
+}
+.icon-synergy-edit:before {
+	content: "\e010";
+}
+.icon-synergy-mail:before {
+	content: "\e020";
+}
+.icon-synergy-lecture:before {
+	content: "\e023";
+}
+.icon-synergy-licenses:before {
+	content: "\e006";
+}
+.icon-synergy-license:before {
+	content: "\e007";
+}
+.icon-synergy-users:before {
+	content: "\e009";
+}
+.icon-synergy-delete-user:before {
+	content: "\e00b";
+}
+.icon-synergy-add-user:before {
+	content: "\e04e";
+}
+.icon-synergy-user:before {
+	content: "\e04f";
+}
+.icon-synergy-calendar:before {
+	content: "\e050";
+}
+.icon-synergy-location:before {
+	content: "\e012";
+}
+.icon-synergy-library:before {
+	content: "\e013";
+}
+.icon-synergy-home:before {
+	content: "\e015";
+}
+.icon-synergy-idea:before {
+	content: "\e016";
+}
+.icon-synergy-help-a:before {
+	content: "\e017";
+}
+.icon-synergy-close-dark:before {
+	content: "\e018";
+}
+.icon-synergy-delete-dark:before {
+	content: "\e019";
+}
+.icon-synergy-add-dark:before {
+	content: "\e051";
+}
+.icon-synergy-close-small:before {
+	content: "\e052";
+}
+.icon-synergy-delete-small:before {
+	content: "\e053";
+}
+.icon-synergy-questions:before {
+	content: "\e02d";
+}
+.icon-synergy-openquestions:before {
+	content: "\e02d";
+}
+.icon-synergy-power:before {
+	content: "\e02e";
+}
+.icon-synergy-folder-a:before {
+	content: "\e02f";
+}
+.icon-synergy-reports:before {
+	content: "\e030";
+}
+.icon-synergy-edit-doc:before {
+	content: "\e031";
+}
+.icon-synergy-close-doc:before {
+	content: "\e032";
+}
+.icon-synergy-delete-doc:before {
+	content: "\e033";
+}
+.icon-synergy-add-doc:before {
+	content: "\e034";
+}
+.icon-synergy-doc-ok:before {
+	content: "\e035";
+}
+.icon-synergy-key:before {
+	content: "\e036";
+}
+.icon-synergy-unlocked:before {
+	content: "\e037";
+}
+.icon-synergy-search-b:before {
+	content: "\e038";
+}
+.icon-synergy-search-a:before {
+	content: "\e039";
+}
+.icon-synergy-create:before {
+	content: "\e03a";
+}
+.icon-synergy-grid-view:before {
+	content: "\e03b";
+}
+.icon-synergy-icon-view:before {
+	content: "\e03c";
+}
+.icon-synergy-modules:before {
+	content: "\e03d";
+}
+.icon-synergy-document:before {
+	content: "\e03f";
+}
+.icon-synergy-tablet:before {
+	content: "\e040";
+}
+.icon-synergy-dashboard:before {
+	content: "\e041";
+}
+.icon-synergy-units:before {
+	content: "\e043";
+}
+.icon-synergy-courses:before {
+	content: "\e048";
+}
+.icon-synergy-newmail:before {
+	content: "\e04d";
+}
+.icon-synergy-tests:before {
+	content: "\e005";
+}
+.icon-synergy-lessons:before {
+	content: "\e01d";
+}
+.icon-synergy-activities:before {
+	content: "\f0c3";
+}
+.icon-synergy-products:before {
+	content: "\e008";
+}
+.icon-synergy-clock:before {
+	content: "\e00a";
+}
+.icon-synergy-view:before {
+	content: "\e00c";
+}
+.icon-columns-extend:before
+{
+content:"\e012";
+}
+/* additional Style for smaller icons */
+.icon-synergy-repository:before {
+	content: "\e02f";
+}
+
+
+.icon-synergy-pd:before {
+	content: "\e048";
+}
+
+
+.small-icon{
+	font-size:1.5em;
+}
+
+#divcustomlightbox {
+	/*display:none;	*/
+	z-index:10000;	
+	left: 0;
+	top:0;
+	position:absolute;
+	background-color:#24485F;	
+	
+}
+
+#divlbcontent, #divlbcontentmodule {
+	/*width:10%;
+	margin:0 auto 0 auto;*/
+	background:#FFF;
+	min-height:300px;
+	z-index:10001;	
+	float:left;
+	position:relative;
+	
+}
+#divlbcontent{	
+	background-image: url(../img/questionloader.gif);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+#divlbcontentmodule {
+	width:100%;
+	height:100%;	
+}
+
+.btnprevclose {
+	position:relative;
+	float:left;
+	width:100%;
+	z-index:10002;
+	height:45px;
+	background-color:#24485F;
+	
+}
+
+.btnprevclose a {
+	color:#FFF;
+	float: right;
+    margin: -2px 2% 0 0;
+}
+
+.btnprevclose a:hover {
+	color:#88ABC2;	
+}
+
+.diviplbottom {
+	position:relative;
+	height:45px;
+	background-color:#24485F;
+	width:100%;
+	float:left;
+}
+
+.dialogTitleFullScr, .dialogTitleSmallFullScr, .dialogTitleMediumFullScr {
+	margin-left:2%;
+	color: #FFFFFF;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-size: 3.6rem;
+	width:50%;
+	float:left;
+    line-height: 120%;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.dialogTitleMediumFullScr {
+	font-size: 2.9rem;
+    margin-top: 2px;
+    width: auto;	
+}
+
+.dialogTitleSmallFullScr {
+	font-size: 1.9rem;
+    margin-top: 2px;
+    width: auto;
+}
+
+#loadImg{
+	height: 70px;
+    margin: 11% auto 0;
+    width: 70px;
+    z-index: 999;	
+}
+
+.thumbimg {
+	left: 0;
+    margin: 10px 0 0 28px;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    width: 40px;	
+}
+
+.icon-upload-success
+{
+	background-color: #FFFFFF;
+	color: #FFFFFF;
+	width: 380px;
+}
+
+.timeRemain {
+	color: #FFFFFF;
+	font-family: ‘Source Sans Pro’;
+	font-size: 36px;
+	font-weight: bold;
+	letter-spacing: 0pt;
+	line-height: 120%;
+	text-shadow: 0 1px 0 rgba(255,255,255,.8), 0 -1px 0 rgba(0,0,0,.6);
+	margin-top:-4px;
+}
+
+.gotoText{
+	margin-left:10px;
+	margin-top:10px;
+}
+
+#divcontent{
+	height:75%;
+	margin-top:5%; 
+	background-color:#FFF;
+}
+
+
+/*Rajkumar*/
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts3/icomoon.eot?6eo8np');
+  src:  url('fonts3/icomoon.eot?6eo8np#iefix') format('embedded-opentype'),
+    url('fonts3/icomoon.ttf?6eo8np') format('truetype'),
+    url('fonts3/icomoon.woff?6eo8np') format('woff'),
+    url('fonts3/icomoon.svg?6eo8np#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-expeditions:before, .icon-MATH_expeditions:before, .icon-STEM_expeditions:before  {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-expeditions, .icon-MATH_expeditions, .icon-STEM_expeditions  {
+	font-size:2em;
+	margin-top:10px;
+	color: #6d99b2;
+	text-align: center;
+	text-shadow: 0 1px 1px #fff;
+}
+
+.icon-expeditions:before {
+  content: "\e900";
+ 
+}
+.icon-MATH_expeditions:before {
+  content: "\e903";
+    
+}
+.icon-STEM_expeditions:before {
+  content: "\e904";
+   
+}
+
